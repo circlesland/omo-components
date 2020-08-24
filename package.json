@@ -12,7 +12,13 @@
   },
   "devDependencies": {
     "@stencil/core": "^1.17.3",
-    "@stencil/router": "^1.0.1"
+    "@stencil/router": "^1.0.1",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@stencil/postcss": "^1.0.1",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
+    "tailwindcss": "^1.7.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

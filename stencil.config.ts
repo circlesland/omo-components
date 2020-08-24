@@ -1,4 +1,11 @@
 import { Config } from '@stencil/core';
+import { postcss } from '@stencil/postcss';
+import autoprefixer from 'autoprefixer';
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+  content: ['./src/**/*.tsx', './src/index.html'],
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+});
 
 // https://stenciljs.com/docs/config
 
@@ -13,5 +20,10 @@ export const config: Config = {
       serviceWorker: null,
       baseUrl: 'https://myapp.local/',
     },
+  ],
+  plugins: [
+    postcss({
+      plugins: [require('tailwindcss')('./tailwind.config.js'), autoprefixer(), ...(process.env.NODE_ENV === 'production' ? [purgecss, require('cssnano')] : [])],
+    }),
   ],
 };
